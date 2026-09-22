@@ -24,3 +24,8 @@ Route::get('/{param1}/nama/', function ($param1) {
     else
         return 'Nama saya: '.$param1;
 });
+
+ Route::get('/home',[HomeController::class,'index']);
+
+Route::post('question/store', [QuestionController::class, 'store'])
+		->name('question.store');
