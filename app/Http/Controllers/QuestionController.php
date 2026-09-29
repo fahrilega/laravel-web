@@ -30,9 +30,8 @@ class QuestionController extends Controller
     $data['nama']        = $request->nama;
     $data['email']       = $request->email;
     $data['pertanyaan']  = $request->pertanyaan;
-
     return view('home-question-respon', $data);
-    
+
 		$request->validate([
 		    'nama'  => 'required|max:10',
 		    'email' => ['required','email'],
