@@ -29,3 +29,5 @@ Route::get('/{param1}/nama/', function ($param1) {
 
 Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
+
+Route::get('/question', [QuestionController::class, 'index'])->name('question.index');
