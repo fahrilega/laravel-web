@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('pelanggan', function (Blueprint $table) {
-            $table->string('first_name', 255)->change();
-            $table->string('last_name', 255)->change();
-            $table->string('email', 255)->change();
-            $table->string('phone', 30)->nullable()->change();
+        $table->string('first_name', 255)->change();
+        $table->string('last_name', 255)->change();
         });
     }
 
@@ -25,10 +23,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('pelanggan', function (Blueprint $table) {
-            $table->string('first_name', 100)->change();
-            $table->string('last_name', 100)->change();
-            $table->string('email', 255)->change(); // Default string() di Laravel adalah 255
-            $table->string('phone', 20)->nullable()->change();
+        $table->string('first_name', 100)->change();
+        $table->string('last_name', 100)->change();
+        $table->string('phone', 20)->nullable()->change();
         });
     }
 };
