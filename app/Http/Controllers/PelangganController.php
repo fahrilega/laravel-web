@@ -10,9 +10,10 @@ class PelangganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['dataPelanggan'] = Pelanggan::all();
+
+        $data['dataPelanggan'] = Pelanggan::paginate(10)->onEachSide(1);
 		return view('admin.pelanggan.index',$data);
     }
 
