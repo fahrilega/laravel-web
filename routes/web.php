@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
@@ -17,24 +18,24 @@ Route::get('/pcr', function () {
 });
 
 Route::get('/Annisa', function () {
-    return 'Halo Falisha!';
+    return 'Halo Fahri!';
 });
 
 Route::get('/Hobi', function () {
-    return 'Hobi saya memasak!';
+    return 'Hobi saya mancing!';
 });
 
 Route::get('/nama/{param1}', function ($param1) {
     return 'Nama saya: '.$param1;
 });
 
-Route::get('{param1}/{param2}/Annisa', function () {
-    return 'Halo Falisha'.$param1;
+Route::get('{param1}/{param2}/Fahri', function ($param1, $param2) {
+    return 'Halo Fahri ' . $param1;
 });
 
 Route::get('{param1}/nama', function ($param1) {
-    if($param1 == 'Falisha')
-        return 'Mahrin';
+    if($param1 == 'Fahri')
+        return 'lega';
     else
         return 'Nama saya: '.$param1;
 });
@@ -69,3 +70,11 @@ Route::post('question/store', [QuestionController::class, 'store'])
 		->name('question.store');
 
 Route::resource('pelanggan', PelangganController::class);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('/logout', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('auth.logout');
+
+Route::get('auth/logout', [AuthController::class,'logout'])->name('logout');
